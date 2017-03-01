@@ -20,6 +20,7 @@ public class Panel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         draw((Graphics2D)g);
+        //ich bin ein tolles kommentar
     }
     
     /**
