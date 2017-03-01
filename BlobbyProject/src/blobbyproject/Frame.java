@@ -18,12 +18,6 @@ public class Frame extends JFrame {
     public Frame() {
         
     }
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        draw((Graphics2D)g);
-        //ich bin ein tolles kommentar
-    }
     
     /**
      * inits the JFrame: size etc.
@@ -43,6 +37,13 @@ public class Frame extends JFrame {
     private void draw(Graphics2D g) {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         //code here
+    }
+    
+    /**
+     * this Method prints the String "Eichelcasio" to the Console
+     */
+    public void tolleMethode() {
+        System.out.println("Eichelcasio");
     }
     
 }
