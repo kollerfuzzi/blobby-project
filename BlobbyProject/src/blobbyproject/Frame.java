@@ -5,22 +5,30 @@
  */
 package blobbyproject;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import javax.swing.JPanel;
+import javax.swing.JFrame;
 
 /**
  *
  * @author koller
  */
-public class Panel extends JPanel {
+public class Frame extends JFrame {
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        draw((Graphics2D)g);
+    public Frame() {
+        
     }
+    
+    /**
+     * inits the JFrame: size etc.
+     */
+    public void init() {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(800, 600);
+        this.setVisible(true);
+    }
+    
+    
     
     /**
      * Draws the 
