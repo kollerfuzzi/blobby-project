@@ -22,6 +22,10 @@ public class Panel extends JPanel {
         draw((Graphics2D)g);
     }
     
+    /**
+     * Draws the 
+     * @param g Graphics context
+     */
     private void draw(Graphics2D g) {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         //code here
