@@ -44,8 +44,6 @@ public class Frame extends JFrame implements KeyListener{
     /**
      * this Method prints the String "Eichelcasio" to the Console
      */
-    public void tolleMethode() {
-        System.out.println("Eichelcasio");
-    }
+    
     
 }
