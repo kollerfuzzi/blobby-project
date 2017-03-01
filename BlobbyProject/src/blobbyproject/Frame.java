@@ -45,4 +45,8 @@ public class Frame extends JFrame {
         //code here
     }
     
+    public void tolleMethode(){
+        System.out.println("Zinkerer");
+    }
+    
 }
