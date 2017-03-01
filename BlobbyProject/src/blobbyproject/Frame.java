@@ -18,6 +18,12 @@ public class Frame extends JFrame {
     public Frame() {
         
     }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+        draw((Graphics2D)g);
+        //ich bin ein tolles kommentar
+    }
     
     /**
      * inits the JFrame: size etc.
