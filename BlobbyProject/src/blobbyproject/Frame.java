@@ -7,13 +7,15 @@ package blobbyproject;
 
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 /**
  *
  * @author koller
  */
-public class Frame extends JFrame {
+public class Frame extends JFrame implements KeyListener{
 
     public Frame() {
         
