@@ -9,13 +9,17 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JFrame;
 
 /**
  *
  * @author koller
  */
-public class Frame extends JFrame implements KeyListener{
+public class Frame extends JFrame implements KeyListener {
+    
+    private final Set<Integer> keys = new HashSet<>();
 
     public Frame() {
         
@@ -27,9 +31,9 @@ public class Frame extends JFrame implements KeyListener{
     public void init() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
+        this.addKeyListener(this);
         this.setVisible(true);
     }
-    
     
     
     /**
@@ -40,10 +44,23 @@ public class Frame extends JFrame implements KeyListener{
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         //code here
     }
-    
-    /**
-     * this Method prints the String "Eichelcasio" to the Console
-     */
-    
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        keys.add(e.getKeyCode());
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        keys.remove(e.getKeyCode());
+    }
+
+    public Set<Integer> getKeys() {
+        return keys;
+    }
     
 }

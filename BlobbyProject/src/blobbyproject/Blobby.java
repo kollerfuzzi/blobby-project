@@ -12,39 +12,48 @@ import java.awt.Graphics2D;
  * @author koller
  */
 public class Blobby {
+
     public static enum Side {
         LEFT, RIGHT
     };
-    
+
     private double posX;
     private double posY;
-    private double radius;
+    private double radius = 50;
+    private double speed = 3;
+
     private int width;
     private Side side;
-    
+
     /**
      * Creates a new Blobby
+     *
      * @param side can either be LEFT or RIGHT
      * @param width width of the field (panel)
      */
-    public Blobby (Side side, int width) {
+    public Blobby(Side side, int width) {
         this.side = side;
     }
-    
+
     /**
-     * resets the position to the default position of the Blobby, 
-     * based on the side
+     * resets the position to the default position of the Blobby, based on the
+     * side
      */
-    public void resetPosition(){
-        
+    public void resetPosition() {
+        if (side == Side.LEFT) {
+            posX = width / 2 - width / 4;
+        } else if (side == Side.RIGHT) {
+            posX = width / 2 + width / 4;
+        }
     }
-    
+
     /**
      * Draws the Blobby to a graphics context.
+     *
      * @param g Graphics context
      */
     public void draw(Graphics2D g) {
-        
+
     }
 
     public double getPosX() {
@@ -86,6 +95,13 @@ public class Blobby {
     public void setRadius(double radius) {
         this.radius = radius;
     }
-    
-    
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
 }
