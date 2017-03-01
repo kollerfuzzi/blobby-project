@@ -7,12 +7,21 @@ package blobbyproject;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import javax.swing.JFrame;
 
 /**
  *
  * @author alex
  */
 public class UpdateFrame {
+
+    JFrame frame;
+
+    public UpdateFrame(JFrame frame) {
+        this.frame = frame;
+    }
+
+    
 
     private void framesControlled() {
 
