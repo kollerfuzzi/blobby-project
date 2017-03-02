@@ -5,6 +5,7 @@
  */
 package blobbyproject;
 
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 
 /**
@@ -22,17 +23,18 @@ public class Blobby {
     private double radius = 50;
     private double speed = 3;
 
-    private int width;
+    private Dimension size;
     private Side side;
 
     /**
      * Creates a new Blobby
      *
      * @param side can either be LEFT or RIGHT
-     * @param width width of the field (panel)
+     * @param dim dimension of the field (panel)
      */
-    public Blobby(Side side, int width) {
+    public Blobby(Side side, Dimension dim) {
         this.side = side;
+        this.size = dim;
     }
 
     /**
@@ -41,9 +43,9 @@ public class Blobby {
      */
     public void resetPosition() {
         if (side == Side.LEFT) {
-            posX = width / 2 - width / 4;
+            posX = size.width / 2 - size.width / 4;
         } else if (side == Side.RIGHT) {
-            posX = width / 2 + width / 4;
+            posX = size.width / 2 + size.width / 4;
         }
     }
 
@@ -72,12 +74,12 @@ public class Blobby {
         this.posY = posY;
     }
 
-    public int getWidth() {
-        return width;
+    public Dimension getWidth() {
+        return size;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public void setWidth(Dimension width) {
+        this.size = width;
     }
 
     public Side getSide() {

@@ -19,8 +19,8 @@ import javax.swing.JFrame;
  */
 public class Frame extends JFrame implements KeyListener {
     
-    //private final Set<Integer> keys = new HashSet<>();
-    private ListOfPressedKeys keys = new ListOfPressedKeys();
+    private final Set<Integer> keys = new HashSet<>();
+    private DataContainer cont = null;
 
     public Frame() {
         
@@ -34,36 +34,22 @@ public class Frame extends JFrame implements KeyListener {
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.addKeyListener(this);
-        this.setVisible(true);
+        cont = new DataContainer(keys, this.getSize());
     }
     
-    
-    /**
-     * Draws the 
-     * @param g Graphics context
-     */
-    private void draw(Graphics2D g) {
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        //code here
-    }
-
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keys.addKeyCode(e.getKeyCode());
+        keys.add(e.getKeyCode());
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keys.removeKeyCode(e.getKeyCode());
+        keys.remove(e.getKeyCode());
     }
-//    wofür???
-//    public Set<Integer> getKeys() {
-//        return keys.getKeys();
-//    }
     
     
 }
