@@ -19,7 +19,8 @@ import javax.swing.JFrame;
  */
 public class Frame extends JFrame implements KeyListener {
     
-    private final Set<Integer> keys = new HashSet<>();
+    //private final Set<Integer> keys = new HashSet<>();
+    private ListOfPressedKeys keys = new ListOfPressedKeys();
 
     public Frame() {
         
@@ -31,6 +32,7 @@ public class Frame extends JFrame implements KeyListener {
     public void init() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
+        this.setLocationRelativeTo(null);
         this.addKeyListener(this);
         this.setVisible(true);
     }
@@ -51,16 +53,17 @@ public class Frame extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keys.add(e.getKeyCode());
+        keys.addKeyCode(e.getKeyCode());
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keys.remove(e.getKeyCode());
+        keys.removeKeyCode(e.getKeyCode());
     }
-
-    public Set<Integer> getKeys() {
-        return keys;
-    }
+//    wofür???
+//    public Set<Integer> getKeys() {
+//        return keys.getKeys();
+//    }
+    
     
 }
