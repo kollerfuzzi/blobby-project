@@ -5,18 +5,13 @@
  */
 package blobbyproject;
 
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.Set;
-import javax.script.Invocable;
-import javax.script.ScriptException;
+
+
 import javax.swing.JFrame;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 
 /**
  *
@@ -41,7 +36,9 @@ public class Frame extends JFrame implements KeyListener {
         this.addKeyListener(this);
         cont = new DataContainer(keys, this.getSize());
         gc = new GraphicsContainer(this.getSize());
+
         framesControlled();
+
     }
 
     @Override
