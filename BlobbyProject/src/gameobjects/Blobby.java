@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package blobbyproject;
+package gameobjects;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -36,6 +36,7 @@ public class Blobby {
     public Blobby(Side side, Dimension dim) {
         this.side = side;
         this.size = dim;
+        resetPosition();
     }
 
     /**
@@ -56,10 +57,11 @@ public class Blobby {
      * @param g Graphics context
      */
     public void draw(Graphics2D g) {
+        g.drawLine(0, 0, 1000, 1000);
         int size = 20;
         g.setColor(Color.red);
-        g.fillOval((int)(posX - size), (int)(posY - size), 
-                (int)(posX + size), (int)(posY + size));
+        g.fillOval((int) (posX - size), (int) (posY - size),
+                (int) (posX + size), (int) (posY + size));
     }
 
     public double getPosX() {

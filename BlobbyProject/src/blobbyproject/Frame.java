@@ -23,7 +23,7 @@ public class Frame extends JFrame implements KeyListener
 {
 
     private final Set<Integer> keys = new HashSet<>();
-    private DataContainer cont = null;
+    private Game cont = null;
     private GraphicsContainer gc;
 
     public Frame() {
@@ -38,10 +38,9 @@ public class Frame extends JFrame implements KeyListener
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.addKeyListener(this);
-        cont = new DataContainer(keys, this.getSize());
+        cont = new Game(keys, this.getSize());
         gc = new GraphicsContainer(this.getSize());
         setVisible(true);
-        framesControlled();
     }
     
     public void startFrameController() {
