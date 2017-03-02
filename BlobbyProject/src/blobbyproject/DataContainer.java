@@ -17,21 +17,12 @@ import java.util.Set;
 public class DataContainer {
     private Blobby player1;
     private Blobby player2;
-    private Set<Integer> keys;
+    private final Set<Integer> keys;
     
     public DataContainer(Set<Integer> keys, Dimension dim) {
         player1 = new Blobby(Blobby.Side.LEFT, dim);
         player2 = new Blobby(Blobby.Side.RIGHT, dim);
         this.keys = keys;
-    }
-    
-    /**
-     * Draws the Game to a graphics context
-     * @param g Graphics context
-     */
-    private void draw(Graphics2D g) {
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        
     }
     
     /**

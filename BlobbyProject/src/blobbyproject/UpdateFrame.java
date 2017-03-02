@@ -6,7 +6,6 @@
 package blobbyproject;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
@@ -26,8 +25,6 @@ public class UpdateFrame {
         this.bs = bs;
         this.gc = gc;
     }
-
-    
 
     private void framesControlled() {
 
