@@ -24,6 +24,7 @@ public class UpdateFrame {
         this.dim = dim;
         this.bs = bs;
         this.gc = gc;
+        framesControlled();
     }
 
     private void framesControlled() {
@@ -74,9 +75,11 @@ public class UpdateFrame {
 
     private void tick() {
         //do tick 
+       
     }
 
     private void render() {
         //render image
+        
     }
 }
