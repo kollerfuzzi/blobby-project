@@ -23,7 +23,6 @@ public class Frame extends JFrame implements KeyListener {
     private DataContainer cont = null;
 
     public Frame() {
-        
     }
     
     /**
@@ -35,6 +34,7 @@ public class Frame extends JFrame implements KeyListener {
         this.setLocationRelativeTo(null);
         this.addKeyListener(this);
         cont = new DataContainer(keys, this.getSize());
+        UpdateFrame uf = new UpdateFrame(getBufferStrategy());
     }
     
     @Override

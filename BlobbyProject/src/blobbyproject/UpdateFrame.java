@@ -15,10 +15,10 @@ import javax.swing.JFrame;
  */
 public class UpdateFrame {
 
-    JFrame frame;
+    BufferStrategy bstr;
 
-    public UpdateFrame(JFrame frame) {
-        this.frame = frame;
+    public UpdateFrame(BufferStrategy bstr) {
+        this.bstr = bstr;
     }
 
     
