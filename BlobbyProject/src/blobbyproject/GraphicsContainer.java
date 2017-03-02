@@ -7,6 +7,7 @@ package blobbyproject;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -15,12 +16,12 @@ import java.awt.image.BufferedImage;
  */
 public class GraphicsContainer {
     private BufferedImage image;
-    private Graphics g2;
+    private Graphics2D g2;
     private Dimension dim;
     public GraphicsContainer(Dimension dim) {
         this.dim = dim;
         this. image = new BufferedImage(dim.width, dim.height, BufferedImage.TYPE_INT_RGB);
-        g2 = image.getGraphics();
+        g2 = (Graphics2D)image.getGraphics();
     }
     
     public BufferedImage getImage() {
@@ -31,11 +32,11 @@ public class GraphicsContainer {
         this.image = image;
     }
 
-    public Graphics getG2() {
+    public Graphics2D getG2() {
         return g2;
     }
 
-    public void setG2(Graphics g2) {
+    public void setG2(Graphics2D g2) {
         this.g2 = g2;
     }
 

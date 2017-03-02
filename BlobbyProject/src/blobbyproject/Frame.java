@@ -37,7 +37,8 @@ public class Frame extends JFrame implements KeyListener {
         this.addKeyListener(this);
         cont = new DataContainer(keys, this.getSize());
         gc = new GraphicsContainer(this.getSize());
-        UpdateFrame uf = new UpdateFrame(this.getSize(), getBufferStrategy(), gc);
+        this.createBufferStrategy(3);
+        UpdateFrame uf = new UpdateFrame(this.getSize(), this.getBufferStrategy(), gc);
     }
     
     @Override
