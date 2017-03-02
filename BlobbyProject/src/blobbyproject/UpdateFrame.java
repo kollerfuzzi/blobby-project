@@ -5,7 +5,7 @@
  */
 package blobbyproject;
 
-import java.awt.Graphics;
+import java.awt.Dimension;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
@@ -15,13 +15,16 @@ import javax.swing.JFrame;
  */
 public class UpdateFrame {
 
-    BufferStrategy bstr;
+    JFrame frame;
+    Dimension dim;
+    BufferStrategy bs;
+    GraphicsContainer gc;
 
-    public UpdateFrame(BufferStrategy bstr) {
-        this.bstr = bstr;
+    public UpdateFrame(Dimension dim, BufferStrategy bs, GraphicsContainer gc) {
+        this.dim = dim;
+        this.bs = bs;
+        this.gc = gc;
     }
-
-    
 
     private void framesControlled() {
 

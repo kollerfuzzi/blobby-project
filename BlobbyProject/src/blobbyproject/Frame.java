@@ -9,6 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JFrame;
@@ -21,6 +22,7 @@ public class Frame extends JFrame implements KeyListener {
     
     private final Set<Integer> keys = new HashSet<>();
     private DataContainer cont = null;
+    private GraphicsContainer gc;
 
     public Frame() {
     }
@@ -34,7 +36,8 @@ public class Frame extends JFrame implements KeyListener {
         this.setLocationRelativeTo(null);
         this.addKeyListener(this);
         cont = new DataContainer(keys, this.getSize());
-        UpdateFrame uf = new UpdateFrame(getBufferStrategy());
+        gc = new GraphicsContainer();
+        UpdateFrame uf = new UpdateFrame(this.getSize(), getBufferStrategy(), gc);
     }
     
     @Override
