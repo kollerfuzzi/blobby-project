@@ -17,7 +17,7 @@ public class ListOfPressedKeys {
     private Set<Integer> keys = new HashSet<>();
 
     public void addKeyCode(int keyCode) {
-        
+        System.out.println("add: " + keyCode);
         keys.add(keyCode);
     }
 
@@ -26,7 +26,7 @@ public class ListOfPressedKeys {
     }
 
     public void removeKeyCode(int keyCode) {
-        
+        System.out.println("rem: " + keyCode);
         keys.remove(keyCode);
     }
     public Set<Integer> getKeys(){
