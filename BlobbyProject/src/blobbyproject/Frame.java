@@ -12,7 +12,8 @@ import java.awt.event.KeyListener;
 //import java.awt.image.BufferStrategy;
 import java.util.HashSet;
 import java.util.Set;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,8 +22,7 @@ import javax.swing.JPanel;
  *
  * @author koller
  */
-public class Frame extends JFrame implements KeyListener 
-{
+public class Frame extends JFrame implements KeyListener {
 
     private final Set<Integer> keys = new HashSet<>();
     private Game cont = null;
@@ -40,13 +40,14 @@ public class Frame extends JFrame implements KeyListener
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.addKeyListener(this);
         cont = new Game(keys, this.getSize());
         gc = new GraphicsContainer(this.getSize());
         this.add(pn_main, BorderLayout.CENTER);
         setVisible(true);
     }
-    
+
     public void startFrameController() {
         framesControlled();
     }
@@ -55,7 +56,7 @@ public class Frame extends JFrame implements KeyListener
     public void keyTyped(KeyEvent e) {
     }
 
-    @Override 
+    @Override
     public void keyPressed(KeyEvent e) {
         keys.add(e.getKeyCode());
     }
@@ -68,7 +69,11 @@ public class Frame extends JFrame implements KeyListener
     private void framesControlled() {
         Thread t;
         t = new Thread(() -> {
-
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             long lastTime = System.nanoTime();
             double nsPerTick = 10E8 / 60D;
             int ticks = 0;
@@ -99,7 +104,7 @@ public class Frame extends JFrame implements KeyListener
 
                 if (System.currentTimeMillis() - lastTimer >= 1000) {
                     lastTimer += 1000;
-                    System.out.println("ticks: " + ticks + " frames: " + frames);
+                    //System.out.println("ticks: " + ticks + " frames: " + frames);
                     frames = 0;
                     ticks = 0;
                 }
@@ -116,21 +121,9 @@ public class Frame extends JFrame implements KeyListener
 
     private void render() {
         cont.draw(gc.getG2());
-        
-//        BufferStrategy bs = this.getBufferStrategy();
-//
-//        if (bs == null) {
-//            this.createBufferStrategy(3);
-//            //this.createBufferStrategy(3);
-//            System.out.println("create BS");
-//            return;
-//        }
         Graphics g = pn_main.getGraphics();
-
         g.drawImage(gc.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
         g.dispose();
-//        bs.show();
-
     }
-
+    
 }

@@ -20,13 +20,52 @@ public class Vector {
      * @param xVal x-value
      * @param yVal y-value
      */
-    public Vector(int xVal, int yVal) {
+    public Vector(double xVal, double yVal) {
         this.x = xVal;
         this.y = yVal;
     }
 
     /**
+     * Inverts the Vector's orientation
+     */
+    public void invert() {
+        this.x = this.x * (-1);
+        this.y = this.y * (-1);
+    }
+    
+    /**
+     * Inverts the Vector's orientation, but doesn't change the object
+     *
+     * @return the new object  
+     */
+    public Vector inverted() {
+        return new Vector(this.x * (-1), this.y * (-1));
+    }
+
+    /**
+     * Calculates the length of the vector
+     *
+     * @return length of the vector
+     */
+    public double length() {
+        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+    }
+
+    /**
+     * Adds 2 Vectors
+     *
+     * @param v vector to add
+     * @return copy of the Vector
+     */
+    public Vector add(Vector v) {
+        this.x += v.getX();
+        this.y += v.getY();
+        return this;
+    }
+
+    /**
      * Getter for the x-value of the Vector
+     *
      * @return the x-value
      */
     public double getX() {
@@ -35,6 +74,7 @@ public class Vector {
 
     /**
      * Getter for the y-value of the Vector
+     *
      * @return the y-value
      */
     public double getY() {
@@ -42,31 +82,16 @@ public class Vector {
     }
 
     /**
-     * Inverts the Vector's orientation
-     * @return copy of the Vector
+     * Setter for the x-value of the Vector
      */
-    public Vector invert() {
-        this.x = this.x * (-1);
-        this.y = this.y * (-1);
-        return this;
+    public void setX(double x) {
+        this.x = x;
     }
-    
+
     /**
-     * Calculates the length of the vector
-     * @return length of the vector
+     * Setter for the x-value of the Vector
      */
-    public double length() {
-        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-    }
-    
-    /**
-     * Adds 2 Vectors 
-     * @param v vector to add
-     * @return copy of the Vector
-     */
-    public Vector add(Vector v) {
-        this.x += v.getX();
-        this.y += v.getY();
-        return this;
+    public void setY(double y) {
+        this.y = y;
     }
 }

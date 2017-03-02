@@ -13,16 +13,17 @@ import java.awt.Graphics2D;
  *
  * @author koller
  */
-public class Blobby {
+public final class Blobby {
 
     public static enum Side {
         LEFT, RIGHT
     };
 
-    private double posX;
-    private double posY;
     private double radius = 50;
-    private double speed = 3;
+    private final Vector moveVector = new Vector(0, 0);
+    private final Vector posVector = new Vector(0, 0);
+    public static final Vector GRAVITY = new Vector(0, 2);
+    public static final Vector ACCEL = new Vector(12, 0);
 
     private Dimension size;
     private Side side;
@@ -45,10 +46,11 @@ public class Blobby {
      */
     public void resetPosition() {
         if (side == Side.LEFT) {
-            posX = size.width / 2 - size.width / 4;
+            posVector.setX(size.width / 2 - size.width / 4);
         } else if (side == Side.RIGHT) {
-            posX = size.width / 2 + size.width / 4;
+            posVector.setX(size.width / 2 + size.width / 4);
         }
+        posVector.setY(size.height - 30);
     }
 
     /**
@@ -57,26 +59,26 @@ public class Blobby {
      * @param g Graphics context
      */
     public void draw(Graphics2D g) {
-        int size = 20;
+        g.drawLine(400, 0, 400, 600);
+        int size = 50;
         g.setColor(Color.red);
-        g.fillOval((int) (posX - size), (int) (posY - size),
-                (int) (posX + size), (int) (posY + size));
+        g.fillOval((int) (posVector.getX() - size), (int) (posVector.getY() - size),
+                (int) (size), (int) (size));
     }
 
-    public double getPosX() {
-        return posX;
+    public void update() {
+        if (posVector.getY() <= 550) {
+            this.moveVector.add(GRAVITY);
+        } else if(this.moveVector.getY() > 0 && posVector.getY() >= 400) {
+            this.moveVector.setY(0);
+        }
+        this.posVector.add(moveVector);
     }
 
-    public void setPosX(double posX) {
-        this.posX = posX;
-    }
-
-    public double getPosY() {
-        return posY;
-    }
-
-    public void setPosY(double posY) {
-        this.posY = posY;
+    public void jump() {
+        if (posVector.getY() >= 550) {
+            this.moveVector.add(new Vector(0, -35));
+        }
     }
 
     public Dimension getWidth() {
@@ -103,12 +105,12 @@ public class Blobby {
         this.radius = radius;
     }
 
-    public double getSpeed() {
-        return speed;
+    public Vector getMoveVector() {
+        return moveVector;
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
+    public Vector getPosVector() {
+        return posVector;
     }
 
 }
