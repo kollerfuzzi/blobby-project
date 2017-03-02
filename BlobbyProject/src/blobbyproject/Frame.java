@@ -101,7 +101,7 @@ public class Frame extends JFrame implements KeyListener {
     }
 
     private void tick() {
-        //do tick 
+        
        
     }
 
