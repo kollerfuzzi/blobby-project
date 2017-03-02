@@ -57,7 +57,6 @@ public class Blobby {
      * @param g Graphics context
      */
     public void draw(Graphics2D g) {
-        g.drawLine(0, 0, 1000, 1000);
         int size = 20;
         g.setColor(Color.red);
         g.fillOval((int) (posX - size), (int) (posY - size),

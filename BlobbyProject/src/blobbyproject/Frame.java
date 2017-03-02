@@ -5,15 +5,17 @@
  */
 package blobbyproject;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferStrategy;
+//import java.awt.image.BufferStrategy;
 import java.util.HashSet;
 import java.util.Set;
 
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -25,6 +27,7 @@ public class Frame extends JFrame implements KeyListener
     private final Set<Integer> keys = new HashSet<>();
     private Game cont = null;
     private GraphicsContainer gc;
+    private JPanel pn_main = new JPanel();
 
     public Frame() {
         init();
@@ -40,6 +43,7 @@ public class Frame extends JFrame implements KeyListener
         this.addKeyListener(this);
         cont = new Game(keys, this.getSize());
         gc = new GraphicsContainer(this.getSize());
+        this.add(pn_main, BorderLayout.CENTER);
         setVisible(true);
     }
     
@@ -113,19 +117,19 @@ public class Frame extends JFrame implements KeyListener
     private void render() {
         cont.draw(gc.getG2());
         
-        BufferStrategy bs = this.getBufferStrategy();
-
-        if (bs == null) {
-            this.createBufferStrategy(3);
-            //this.createBufferStrategy(3);
-            System.out.println("create BS");
-            return;
-        }
-        Graphics g = bs.getDrawGraphics();
+//        BufferStrategy bs = this.getBufferStrategy();
+//
+//        if (bs == null) {
+//            this.createBufferStrategy(3);
+//            //this.createBufferStrategy(3);
+//            System.out.println("create BS");
+//            return;
+//        }
+        Graphics g = pn_main.getGraphics();
 
         g.drawImage(gc.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
         g.dispose();
-        bs.show();
+//        bs.show();
 
     }
 
