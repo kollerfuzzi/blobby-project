@@ -5,6 +5,7 @@
  */
 package blobbyproject;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 
@@ -55,7 +56,10 @@ public class Blobby {
      * @param g Graphics context
      */
     public void draw(Graphics2D g) {
-
+        int size = 20;
+        g.setColor(Color.red);
+        g.fillOval((int)(posX - size), (int)(posY - size), 
+                (int)(posX + size), (int)(posY + size));
     }
 
     public double getPosX() {

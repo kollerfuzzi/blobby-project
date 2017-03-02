@@ -57,7 +57,7 @@ public class Frame extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
         keys.remove(e.getKeyCode());
     }
-    
+
     private void framesControlled() {
         Thread t;
         t = new Thread(() -> {
@@ -104,13 +104,11 @@ public class Frame extends JFrame implements KeyListener {
     }
 
     private void tick() {
-        //do tick 
-       
+        cont.update();
     }
 
     private void render() {
-        //render image
-        
+        cont.draw(gc.getG2());
     }
 
 }
