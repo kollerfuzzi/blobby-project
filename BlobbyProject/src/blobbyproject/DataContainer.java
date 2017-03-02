@@ -28,10 +28,15 @@ public class DataContainer {
     /**
      * Updates the game
      */
-    private void update() {
+    public void update() {
         
     }
-
+    
+    public void draw(Graphics2D g) {
+        player1.draw(g);
+        player2.draw(g);
+    }
+    
     public Blobby getPlayer1() {
         return player1;
     }

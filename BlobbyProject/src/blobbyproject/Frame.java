@@ -5,8 +5,10 @@
  */
 package blobbyproject;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferStrategy;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,35 +19,36 @@ import javax.swing.JFrame;
  *
  * @author koller
  */
-public class Frame extends JFrame implements KeyListener {
+public class Frame extends JFrame implements KeyListener 
+{
 
     private final Set<Integer> keys = new HashSet<>();
     private DataContainer cont = null;
     private GraphicsContainer gc;
 
     public Frame() {
+        init();
     }
 
     /**
      * inits the JFrame: size etc.
      */
-    public void init() {
+    public final void init() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.addKeyListener(this);
         cont = new DataContainer(keys, this.getSize());
         gc = new GraphicsContainer(this.getSize());
-
+        setVisible(true);
         framesControlled();
-
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
-    @Override
+    @Override 
     public void keyPressed(KeyEvent e) {
         keys.add(e.getKeyCode());
     }
@@ -54,7 +57,7 @@ public class Frame extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
         keys.remove(e.getKeyCode());
     }
-    
+
     private void framesControlled() {
         Thread t;
         t = new Thread(() -> {
@@ -96,18 +99,31 @@ public class Frame extends JFrame implements KeyListener {
 
             }
         });
-        t.setName("snake1234");
+        t.setName("ourMainThread");
         t.start();
     }
 
     private void tick() {
-        
-       
+        cont.update();
     }
 
     private void render() {
-        //render image
+        cont.draw(gc.getG2());
         
+        BufferStrategy bs = this.getBufferStrategy();
+
+        if (bs == null) {
+            this.createBufferStrategy(3);
+            //this.createBufferStrategy(3);
+            System.out.println("create BS");
+            return;
+        }
+        Graphics g = bs.getDrawGraphics();
+
+        g.drawImage(gc.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+        g.dispose();
+        bs.show();
+
     }
 
 }

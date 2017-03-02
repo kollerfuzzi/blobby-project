@@ -20,7 +20,7 @@ public class GraphicsContainer {
     private Dimension dim;
     public GraphicsContainer(Dimension dim) {
         this.dim = dim;
-        this. image = new BufferedImage(dim.width, dim.height, BufferedImage.TYPE_INT_RGB);
+        this.image = new BufferedImage(dim.width, dim.height, BufferedImage.TYPE_INT_RGB);
         g2 = (Graphics2D)image.getGraphics();
     }
     

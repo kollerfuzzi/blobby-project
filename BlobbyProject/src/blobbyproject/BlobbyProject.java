@@ -13,8 +13,8 @@ public class BlobbyProject {
 
     public static void main(String[] args) {
         Frame fr = new Frame();
-        fr.init();
         fr.setVisible(true);
+        fr.startFrameController();
     }
     
 }
