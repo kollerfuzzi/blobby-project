@@ -43,6 +43,10 @@ public class Frame extends JFrame implements KeyListener
         setVisible(true);
         framesControlled();
     }
+    
+    public void startFrameController() {
+        framesControlled();
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
