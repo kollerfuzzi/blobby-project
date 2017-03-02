@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
 import java.util.Set;
 
 /**
@@ -33,7 +34,37 @@ public class Game {
      * Updates the game
      */
     public void update() {
-        
+        keyCtl(player1, keys.contains(KeyEvent.VK_UP), 
+                keys.contains(KeyEvent.VK_DOWN), 
+                keys.contains(KeyEvent.VK_LEFT),
+                keys.contains(KeyEvent.VK_RIGHT));
+        keyCtl(player2, keys.contains(KeyEvent.VK_W), 
+                keys.contains(KeyEvent.VK_S), 
+                keys.contains(KeyEvent.VK_A),
+                keys.contains(KeyEvent.VK_D));
+    }
+    
+    /**
+     * 
+     * @param blob
+     * @param up
+     * @param down
+     * @param right
+     * @param left 
+     */
+    private void keyCtl(Blobby blob, 
+            boolean up, boolean down, boolean left, boolean right) {
+        blob.getMoveVector().setX(0);
+        if(left) {
+            blob.getMoveVector().add(Blobby.ACCEL.inverted());
+        } 
+        if (right) {
+            blob.getMoveVector().add(Blobby.ACCEL);
+        }
+        if(up) {
+            blob.jump();
+        }
+        blob.update();
     }
     
     /**
