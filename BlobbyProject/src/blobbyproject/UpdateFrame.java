@@ -6,8 +6,8 @@
 package blobbyproject;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import javax.swing.JFrame;
 
 /**
  *
@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  */
 public class UpdateFrame {
 
-    JFrame frame;
+    
     Dimension dim;
     BufferStrategy bs;
     GraphicsContainer gc;
@@ -79,7 +79,16 @@ public class UpdateFrame {
     }
 
     private void render() {
-        //render image
+        
+        if (bs == null) {
+            System.out.println("wir sind am arsch");
+            return;
+        }
+        Graphics g = bs.getDrawGraphics();
+
+        g.drawImage(gc.getImage(), 0, 0, dim.width, dim.height, null);
+        g.dispose();
+        bs.show();
         
     }
 }

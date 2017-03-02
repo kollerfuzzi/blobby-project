@@ -12,6 +12,8 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -37,8 +39,13 @@ public class Frame extends JFrame implements KeyListener {
         this.addKeyListener(this);
         cont = new DataContainer(keys, this.getSize());
         gc = new GraphicsContainer(this.getSize());
-        this.createBufferStrategy(3);
         UpdateFrame uf = new UpdateFrame(this.getSize(), this.getBufferStrategy(), gc);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.createBufferStrategy(3);
     }
     
     @Override
