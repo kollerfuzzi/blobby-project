@@ -23,7 +23,7 @@ public final class Blobby {
     private final Vector moveVector = new Vector(0, 0);
     private final Vector posVector = new Vector(0, 0);
     public static final Vector GRAVITY = new Vector(0, 2);
-    public static final Vector ACCEL = new Vector(12, 0);
+    public static final Vector ACCEL = new Vector(12000, 0);
 
     private Dimension size;
     private Side side;
